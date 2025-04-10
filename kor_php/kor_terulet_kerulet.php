@@ -21,7 +21,7 @@ $kerulet = kerulet($sugar);
 
 echo "a kor sugara: " . $sugar . " cm";
 echo "<br>";
-echo "a kor terulete: " . number_format(terulet($sugar), 2) . " cm^2";
+echo "a kor terulete: " . number_format(terulet($terulet), 2) . " cm^2";
 echo "<br>";
 echo "a kor kerulete: " . number_format(kerulet($kerulet), 2) . " cm";
 
