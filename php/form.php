@@ -7,7 +7,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
     // echo '<br>';
 
-    $name = isset($_POST['name']) && !empty(trim($_POST['name'])) ? trim($_POST['name']) : 'you didn\'t enter a name';
+    $name = isset($_POST['name']) && !empty(trim($_POST['name'])) 
+    ? ModifyName(trim($_POST['name'])) 
+    : 'you didn\'t enter a name';
 
     echo 'your name: ' . $name;
 
@@ -23,6 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 else 
 {
     echo "GET request arrived.";
+}
+
+function ModifyName($name) 
+{
+    return ucfirst(strtolower(trim($name)));
 }
 
 ?>
