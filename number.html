@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+    <body>
+        
+        <form method="POST" action="php/num_process.php">
+
+            <input type="number" name="num" id="num">
+            <button type="submit" id="btn">Send</button>
+
+        </form>
+
+        <p id="result"></p>
+
+        <script>
+
+            document.getElementById("btn").addEventListener("click", function(event){
+                event.preventDefault()
+
+                let num = document.getElementById("num").value;
+
+                let postData = new FormData();
+
+                postData.append('num', num);
+                                                
+                fetch('php/num_process.php', {
+                    method: 'POST',
+                    body: postData
+                }).then(res => res.text())
+                .then(data => {
+                    document.getElementById("result").innerHTML = data;
+                })
+                .catch((console.log()));
+                    
+                });
+            
+        </script>
+
+    </body>
+
+</html>
