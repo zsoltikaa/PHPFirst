@@ -1,35 +1,60 @@
-<?php 
+    <?php 
 
-// szerver keres ellenorzese
-if ($_SERVER['REQUEST_METHOD'] == 'POST') 
-{
-    // echo "POST request arrived.";
+    // szerver keres ellenorzese
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') 
+    {
+        // echo "POST request arrived.";
 
-    // echo '<br>';
+        // echo '<br>';
 
-    $name = isset($_POST['name']) && !empty(trim($_POST['name'])) 
-    ? ModifyName(trim($_POST['name'])) 
-    : 'you didn\'t enter a name';
+        $name = isset($_POST['name']) && !empty(trim($_POST['name'])) 
+        ? ModifyName(trim($_POST['name'])) 
+        : 'you didn\'t enter a name';
 
-    echo 'your name: ' . $name;
+        echo 'your name: ' . $name;
 
-    // htmlspecialchars($_POST['name']);
+        echo '<br>';
 
-    // strtolower($_POST['name']);
-    
-    // ucfirst($_POST['name']);
+        $days = $_POST['day'] ?? "not selected";
 
-    // trim($_POST['name']);
+        echo "day: " . $days;
 
-}
-else 
-{
-    echo "GET request arrived.";
-}
+        echo "<br>";
 
-function ModifyName($name) 
-{
-    return ucfirst(strtolower(trim($name)));
-}
+        if (isset($_POST['curriculum']) && !empty($_POST['curriculum'])) {
+            $curriculum = $_POST['curriculum'];
+            foreach ($curriculum as $c) {
+                echo "curriculum selected: " . "<li>" . $c . "</li>";
+            }
+        } else {
+            echo "curriculum: " . "not selected";
+        }
 
-?>
+        echo "<br>";
+
+        $groups = $_POST['group'] ?? "not selected";
+
+        echo "group: " . $groups;
+
+        // htmlspecialchars($_POST['name']);
+
+        // strtolower($_POST['name']);
+        
+        // ucfirst($_POST['name']);
+
+        // trim($_POST['name']);
+
+        echo '<p><a href="form.html">back to the form page</a></p>';
+
+    }
+    else 
+    {
+        echo "GET request arrived.";
+    }
+
+    function ModifyName($name) 
+    {
+        return ucfirst(strtolower(trim($name)));
+    }
+
+    ?>
